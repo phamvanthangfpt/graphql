@@ -4,12 +4,17 @@ namespace App\GraphQL\Mutations;
 
 final class SnsCallback
 {
-    /**
-     * @param  null  $_
-     * @param  array{}  $args
-     */
     public function __invoke($_, array $args)
     {
-        // TODO implement the resolver
+        $provider = $args['provider'];
+        $code = $args['code'];
+        $isRegistration = $args['isRegistration'] ?? null;
+        $tosAccepted = $args['tosAccepted'] ?? null;
+
+        return [
+            'token' => "2132109afajlk",
+            'provider' => $provider,
+            'code' => $code
+        ];
     }
 }

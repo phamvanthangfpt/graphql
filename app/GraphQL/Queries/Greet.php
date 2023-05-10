@@ -4,12 +4,8 @@ namespace App\GraphQL\Queries;
 
 final class Greet
 {
-    /**
-     * @param  null  $_
-     * @param  array{}  $args
-     */
-    public function __invoke($_, array $args)
+    public function __invoke($rootValue, array $args): string
     {
-        // TODO implement the resolver
+        return "Hello, {$args['name']}!";
     }
 }

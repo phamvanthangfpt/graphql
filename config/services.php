@@ -1,5 +1,8 @@
 <?php
 
+//$redirect = 'http://localhost:3000/en/callback-social';
+$redirect = 'http://local.careercross.com:3000/en/callback-social';
+
 return [
 
     /*
@@ -34,6 +37,18 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'http://localhost:3000/en/callback-social',
+        'redirect' => $redirect,
+    ],
+
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => $redirect,
+    ],
+
+    'linkedin' => [
+        'client_id' => env('LINKEDIN_CLIENT_ID'),
+        'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
+        'redirect' => $redirect,
     ],
 ];

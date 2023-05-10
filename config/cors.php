@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', 'graphql', 'http://192.168.84.53:8000/graphiql', 'http://local.careercross.com/'],
 
     'allowed_methods' => ['*'],
 

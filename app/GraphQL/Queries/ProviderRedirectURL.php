@@ -16,7 +16,7 @@ final class ProviderRedirectURL
         }
 
         if($provider == 'facebook'){
-            $url = 'https://www.facebook.com/';
+            $url = Socialite::driver('facebook')->stateless()->redirect()->getTargetUrl();
         }
 
         if($provider == 'linkedin'){

@@ -2,14 +2,10 @@
 
 namespace App\GraphQL\Queries;
 
-final class Hello
+class Hello
 {
-    /**
-     * @param  null  $_
-     * @param  array{}  $args
-     */
-    public function __invoke($_, array $args)
+    public function __invoke(): string
     {
-        // TODO implement the resolver
+        return 'world!';
     }
 }
