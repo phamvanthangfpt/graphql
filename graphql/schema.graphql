@@ -1,33 +1,68 @@
-scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+scalar DateTime
+    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
 type Query {
     hello: String!
     greet(name: String!): String
     providerRedirectURL(provider: String!): RedirectURL
-    login(guard: String!, email: String!, password: String!, remember: Boolean): Login
+    login(
+        guard: String!
+        email: String!
+        password: String!
+        remember: Boolean
+    ): Login
+    countries: [Countries]
 }
 
-type Mutation{
-    sns_callback(provider: String!, code: String!, isRegistration: Boolean, tosAccepted: Boolean): Callback
+type Mutation {
+    sns_callback(
+        provider: String!
+        code: String!
+        isRegistration: Boolean
+        tosAccepted: Boolean
+    ): Callback
     createPreRegistration(email: String!, tos: Boolean): CreatePreRegistration
+    createEmployerContact(
+        companyName: String!
+        userName: String!
+        telephone: String!
+        companyType: Int!
+        email: String!
+        role: String!
+        reCaptchaToken: String!
+        country: Int!
+        languageJa: Int
+        languageEn: Int
+        jobCount: Int
+        comment: String
+        workLocation: String
+        tos: Boolean!
+        fileName: String
+    ): CreateEmployerContact
 }
 
-type CreatePreRegistration{
-    status: Boolean,
+type CreatePreRegistration {
+    status: Boolean
 }
 
-type Login{
-    token: String,
-    guard: String,
+type CreateEmployerContact {
+    status: Boolean
+    message: String
+    url: String
 }
 
-type Callback{
+type Login {
+    token: String
+    guard: String
+}
+
+type Callback {
     token: String!
     provider: String!
     code: String!
 }
 
-type RedirectURL{
+type RedirectURL {
     url: String!
 }
 
@@ -52,4 +87,17 @@ type Comment {
     id: ID!
     reply: String!
     post: Post! @belongsTo
+}
+
+type Countries {
+    id: ID
+    name_en: String
+    name_ja: String
+    region: Region
+}
+
+type Region {
+    id: ID
+    name_en: String
+    name_ja: String
 }
