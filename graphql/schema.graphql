@@ -1,33 +1,44 @@
-scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+scalar DateTime
+    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
 type Query {
     hello: String!
     greet(name: String!): String
     providerRedirectURL(provider: String!): RedirectURL
-    login(guard: String!, email: String!, password: String!, remember: Boolean): Login
+    login(
+        guard: String!
+        email: String!
+        password: String!
+        remember: Boolean
+    ): Login
 }
 
-type Mutation{
-    sns_callback(provider: String!, code: String!, isRegistration: Boolean, tosAccepted: Boolean): Callback
+type Mutation {
+    sns_callback(
+        provider: String!
+        code: String!
+        isRegistration: Boolean
+        tosAccepted: Boolean
+    ): Callback
     createPreRegistration(email: String!, tos: Boolean): CreatePreRegistration
 }
 
-type CreatePreRegistration{
-    status: Boolean,
+type CreatePreRegistration {
+    status: Boolean
 }
 
-type Login{
-    token: String,
-    guard: String,
+type Login {
+    token: String
+    guard: String
 }
 
-type Callback{
+type Callback {
     token: String!
     provider: String!
     code: String!
 }
 
-type RedirectURL{
+type RedirectURL {
     url: String!
 }
 
@@ -39,6 +50,7 @@ type User {
     created_at: DateTime!
     updated_at: DateTime!
 }
+# aaa
 
 type Post {
     id: ID!
