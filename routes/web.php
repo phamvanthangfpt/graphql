@@ -19,8 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('auth')->group(function (){
-    Route::prefix('google')->group(function (){
+
+Route::get('/download', function () {
+    $file = public_path() . "/pdf-test.pdf";
+    $headers = array(
+        'Content-Type: application/pdf',
+    );
+
+    return Response::download($file, 'pdf-test.pdf', $headers);
+})->name('download');
+
+Route::prefix('auth')->group(function () {
+    Route::prefix('google')->group(function () {
         Route::get('/redirect', function () {
             return Socialite::driver('google')->redirect();
         });
@@ -30,4 +40,3 @@ Route::prefix('auth')->group(function (){
         });
     });
 });
-
