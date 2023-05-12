@@ -11,6 +11,7 @@ type Query {
         password: String!
         remember: Boolean
     ): Login
+    countries: [Countries]
 }
 
 type Mutation {
@@ -21,10 +22,33 @@ type Mutation {
         tosAccepted: Boolean
     ): Callback
     createPreRegistration(email: String!, tos: Boolean): CreatePreRegistration
+    createEmployerContact(
+        companyName: String!
+        userName: String!
+        telephone: String!
+        companyType: Int!
+        email: String!
+        role: String!
+        reCaptchaToken: String!
+        country: Int!
+        languageJa: Int
+        languageEn: Int
+        jobCount: Int
+        comment: String
+        workLocation: String
+        tos: Boolean!
+        fileName: String
+    ): CreateEmployerContact
 }
 
 type CreatePreRegistration {
     status: Boolean
+}
+
+type CreateEmployerContact {
+    status: Boolean
+    message: String
+    url: String
 }
 
 type Login {
@@ -64,4 +88,17 @@ type Comment {
     id: ID!
     reply: String!
     post: Post! @belongsTo
+}
+
+type Countries {
+    id: ID
+    name_en: String
+    name_ja: String
+    region: Region
+}
+
+type Region {
+    id: ID
+    name_en: String
+    name_ja: String
 }
