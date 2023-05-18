@@ -12,6 +12,8 @@ type Query {
         remember: Boolean
     ): Login
     countries: [Countries]
+    articles(articleSectionId: Int): [Articles]
+    article(id: ID): Article
 }
 
 type Mutation {
@@ -101,4 +103,28 @@ type Region {
     id: ID
     name_en: String
     name_ja: String
+}
+
+type Articles {
+    id: ID
+    titleJa: String
+    shortTitleJa: String
+    titleEn: String
+    shortTitleEn: String
+}
+
+type Article {
+    id: ID
+    titleJa: String
+    titleEn: String
+    contentJa: String
+    contentEn: String
+    breadcrumb: [BreadcrumbItem]
+    articleSectionId: Int
+}
+
+type BreadcrumbItem {
+    relativeLink: String
+    textEn: String
+    textJa: String
 }
